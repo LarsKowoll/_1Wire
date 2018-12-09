@@ -1,10 +1,9 @@
 
 
-
-
 #ifndef HEADER_CRC_CALC_H_
 #define HEADER_CRC_CALC_H_
 #include <stdint.h>
+#include "general.h"
 
 
 

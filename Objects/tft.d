@@ -6,5 +6,5 @@
 .\objects\tft.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tft.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
 .\objects\tft.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
-.\objects\tft.o: C:\Keil_v5\ARM\Inc\ST\STM32F10x\system_stm32f10x.h
+.\objects\tft.o: C:\Keil_v5\ARM\INC\ST\STM32F10x\system_stm32f10x.h
 .\objects\tft.o: TI_BRD_LIB\Library\tft.h
