@@ -4,5 +4,6 @@
 #include <stdint.h>
 
 int readBit();
+int reset();
 
 #endif /* HEADER_HARDWARECONTROLLER_H_ */

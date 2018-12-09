@@ -12,4 +12,8 @@ typedef int32_t LONG;
 typedef uint32_t DWORD;
 typedef int32_t BOOL;
 
+#define BUS_PORT		GPIOG
+#define PIN_DATA		0
+#define PIN_POWER		1
+
 #endif /* HEADER_GENERAL_H_ */
