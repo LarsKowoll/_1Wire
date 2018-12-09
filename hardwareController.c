@@ -16,6 +16,7 @@
 
 //--- For Timer -----------------------------
 #include "timer.h"
+#include "hardwareController.h"
 
 static uint64_t startTime;
 static uint64_t time;
@@ -24,7 +25,7 @@ static uint64_t timeDiff;
 static int setBusLow(GPIO_TypeDef* GPIOx, int pin);
 static int setBusHigh(GPIO_TypeDef* GPIOx, int pin);
 static int readBus(GPIO_TypeDef* GPIOx, int pin);
-static int wait(int microseconds);
+
 
 int initHardwareController() {
 	timerinit();
@@ -71,7 +72,15 @@ int readBit() {
 	readBus(GPIOG, PIN_DATA);
 	// 55 mys warten
 	wait(55);
-	readBus(GPIOG, PIN_DATA);
+	return readBus(GPIOG, PIN_DATA);
+}
+
+int readByte() {
+	int ergebnis;
+	for (int i = 0; i < 8; i++) {
+		ergebnis += (readBit()<<i);
+	}
+	return ergebnis;
 }
 
 int reset() {
@@ -82,6 +91,12 @@ int reset() {
 	readBus(GPIOG, PIN_DATA);
 	wait(410);
 	return 0;
+}
+
+int sendCommand(int command) {
+	for(int i = 0; i < 8; i++) {
+		((command>>i)%2)==0 ? write_0() : write_1();
+	}
 }
 
 int wait(int microseconds) {

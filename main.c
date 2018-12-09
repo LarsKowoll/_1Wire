@@ -39,6 +39,7 @@
   */
 int main(void)
 {
+	int byte1, byte2;
 	readBit();
 	reset();
   BYTE buff[] = { //x^8 + x^5 + x^4 +1 = 1 0011 0001
@@ -53,6 +54,21 @@ int main(void)
 	BYTE crc = 0;
 	//calcCRC(7, buff, &crc);
 	printf("\n %x", crc);
+	while(1) {
+	reset();
+	sendCommand(0xCC);
+	sendCommand(0x44);
+	wait(800);
+	
+	//Temperatur auslesen
+	reset();
+	sendCommand(0xCC);
+	sendCommand(0xBE);
+	byte1 = readByte;
+	byte2 = readByte;
+	wait(800);
+	}
+	
 
   return 0;
 

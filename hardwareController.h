@@ -5,5 +5,8 @@
 
 int readBit();
 int reset();
+int sendCommand(int);
+int wait(int microseconds);
+int readByte();
 
 #endif /* HEADER_HARDWARECONTROLLER_H_ */
