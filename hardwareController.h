@@ -2,11 +2,14 @@
 #define HEADER_HARDWARECONTROLLER_H_
 
 #include <stdint.h>
+#include "TI_Lib.h"
+#include "general.h"
 
-int readBit();
-int reset();
+int initHardwareController();
 int sendCommand(int);
-int wait(int microseconds);
 int readByte();
+int setBusLow(GPIO_TypeDef* GPIOx, int pin);
+int setBusHigh(GPIO_TypeDef* GPIOx, int pin);
+int readBus(GPIO_TypeDef* GPIOx, int pin);
 
 #endif /* HEADER_HARDWARECONTROLLER_H_ */

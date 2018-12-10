@@ -16,4 +16,11 @@ typedef int32_t BOOL;
 #define PIN_DATA		0
 #define PIN_POWER		1
 
+typedef struct __attribute__((__packed__)) ROMNUM{
+	BYTE FamilyCode;
+	BYTE Serialnumber[6];
+	BYTE crc;
+}ROM;
+
+
 #endif /* HEADER_GENERAL_H_ */

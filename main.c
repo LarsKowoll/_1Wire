@@ -21,6 +21,8 @@
 #include "general.h"
 #include "crc.h"
 #include "hardwareController.h"
+#include "temperatur.h"
+#include "HAL.h"
 
 //--- For GPIOs -----------------------------
 //Include instead of "stm32f4xx.h" for
@@ -39,9 +41,18 @@
   */
 int main(void)
 {
+	Init_TI_Board();
+	initHardwareController();
+	readROM();
+
+//	while(1){
+//		setBusHigh(GPIOG, 0);
+//		wait(1000);
+//		setBusLow(GPIOG, 0);
+//	}
+	
+	
 	int byte1, byte2;
-	readBit();
-	reset();
   BYTE buff[] = { //x^8 + x^5 + x^4 +1 = 1 0011 0001
 		//0xA2, 0x00, 0x00, 0x00, 0x01, 0xB8, 0x1C, 0x02
 		0x02, 0x1C, 0xB8, 0x01, 0x00, 0x00, 0x00, 0xA2
@@ -55,8 +66,7 @@ int main(void)
 	//calcCRC(7, buff, &crc);
 	printf("\n %x", crc);
 	while(1) {
-	reset();
-	sendCommand(0xCC);
+	
 	sendCommand(0x44);
 	wait(800);
 	
@@ -64,8 +74,8 @@ int main(void)
 	reset();
 	sendCommand(0xCC);
 	sendCommand(0xBE);
-	byte1 = readByte;
-	byte2 = readByte;
+	//byte1 = readByte;
+	//byte2 = readByte;
 	wait(800);
 	}
 	
