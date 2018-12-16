@@ -11,5 +11,9 @@ int readByte();
 int setBusLow(GPIO_TypeDef* GPIOx, int pin);
 int setBusHigh(GPIO_TypeDef* GPIOx, int pin);
 int readBus(GPIO_TypeDef* GPIOx, int pin);
+int writeBit(BYTE);
+int writeBytes(int, BYTE[]);
+int writeByte (BYTE);
+
 
 #endif /* HEADER_HARDWARECONTROLLER_H_ */

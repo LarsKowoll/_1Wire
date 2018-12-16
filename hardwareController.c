@@ -81,4 +81,26 @@ int sendCommand(int command) {
 	}
 }
 
+int writeBit(BYTE out) {
+	if ((out & 0x01) == 1) {
+		write_1();
+	} else {
+		write_0();
+	}
+}
+
+int writeBytes(int numberOfBytes, BYTE out[numberOfBytes]) {
+	for (int byteCount = 0; byteCount < numberOfBytes; byteCount++) {
+		for (int i = 0; i < 8; i++) {
+			wait(1); 
+			writeBit(out[byteCount] >> i); 
+		}
+	}
+}
+
+int writeByte(BYTE out){
+	writeBytes(1,&out);
+	return 0;
+}
+
 

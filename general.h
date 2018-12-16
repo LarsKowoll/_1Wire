@@ -22,5 +22,9 @@ typedef struct __attribute__((__packed__)) ROMNUM{
 	BYTE crc;
 }ROM;
 
+#define SEARCH_ROM 0xF0
+#define MATCH_ROM 0x55
+#define CONVERT_TEMP 0x44
+#define READ_SCRATCHPAD 0xBE
 
 #endif /* HEADER_GENERAL_H_ */

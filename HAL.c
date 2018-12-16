@@ -34,6 +34,10 @@ int write_0() {
 	wait(10);
 }
 
+
+
+
+
 BYTE readBit() {
 	setBusLow(GPIOG, PIN_DATA);
 	// 6 mys warten

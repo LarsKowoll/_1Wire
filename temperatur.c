@@ -14,7 +14,7 @@ int readROM() {
 	unsigned long long romBits = 0;
 	
 	for (int i = 0; i < 64; i++) {
-		sendCommand(0xF0);
+		writeByte(SEARCH_ROM);
 		BYTE bit = readBit();
 		BYTE bitKomplement = readBit();
 		BYTE combination = checkBits(bit, bitKomplement);

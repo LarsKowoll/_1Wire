@@ -3,59 +3,53 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.25.2.0
-Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: TI Labor HAW Hamburg Flex license: MDK-ARM Professional: 40 user(s) (mdk_pro) Support: Nov 2018
+IDE-Version: µVision V5.23.0.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Lars Kowoll, HAW Hamburg, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional: 40 user(s)  Version: 5.25.2.0
+Toolchain:       MDK-Lite  Version: 5.23
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 6 (build 750)
-Assembler:       Armasm.exe V5.06 update 6 (build 750)
-Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
-Library Manager: ArmAr.exe V5.06 update 6 (build 750)
-Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.25.2.0
-Dialog DLL:      DCM.DLL V1.17.1.0
-Target DLL:      ULP2CM3.DLL V2.209.20.0
-Dialog DLL:      TCM.DLL V1.35.1.0
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.23
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
+Target DLL:      UL2CM3.DLL V1.159.7.0
+Dialog DLL:      TARMSTM.DLL V1.66.0.0
  
 <h2>Project:</h2>
-Z:\TI_Labor\Keil\_1Wire\_1Wire.uvproj
-Project File Date:  12/10/2018
+C:\TI_Labor\Keil\_1Wire\_1Wire.uvproj
+Project File Date:  12/16/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'TI-Board'
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Simulation'
 compiling assert.c...
 compiling keypad.c...
-compiling misc.c...
+compiling tft.c...
 compiling timer.c...
 compiling TI_Lib.c...
-compiling tft.c...
-assembling startup_stm32f4xx.s...
-compiling stm32f4xx_dma.c...
-compiling stm32f4xx_adc.c...
-compiling stm32f4xx_usart.c...
-compiling stm32f4xx_gpio.c...
-compiling system_stm32f4xx.c...
-compiling stm32f4xx_rcc.c...
+assembling startup_stm32f10x_md.s...
 compiling Retarget.c...
+compiling Getline.c...
+compiling Serial.c...
+compiling system_stm32f10x.c...
 compiling crc.c...
-general.h(26): warning:  #1-D: last line of file ends without a newline
+general.h(29): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 crc.c: 1 warning, 0 errors
-compiling Usart.c...
-compiling TI_Board_ADC.c...
-compiling TI_Board_IO.c...
+compiling SIM_Board_IO.c...
 compiling main.c...
-general.h(26): warning:  #1-D: last line of file ends without a newline
+general.h(29): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 hardwareController.h(8): warning:  #1295-D: Deprecated declaration initHardwareController - give arg types
   int initHardwareController();
 hardwareController.h(10): warning:  #1295-D: Deprecated declaration readByte - give arg types
   int readByte();
-hardwareController.h(15): warning:  #1-D: last line of file ends without a newline
+hardwareController.h(19): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_HARDWARECONTROLLER_H_ */
 temperatur.h(6): warning:  #1295-D: Deprecated declaration readROM - give arg types
   int readROM();
@@ -80,14 +74,46 @@ main.c(55): warning:  #177-D: variable "byte2"  was declared but never reference
 main.c(56): warning:  #177-D: variable "buff"  was declared but never referenced
     BYTE buff[] = { //x^8 + x^5 + x^4 +1 = 1 0011 0001
 main.c: 15 warnings, 0 errors
-compiling temperatur.c...
-general.h(26): warning:  #1-D: last line of file ends without a newline
+compiling hardwareController.c...
+general.h(29): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 hardwareController.h(8): warning:  #1295-D: Deprecated declaration initHardwareController - give arg types
   int initHardwareController();
 hardwareController.h(10): warning:  #1295-D: Deprecated declaration readByte - give arg types
   int readByte();
-hardwareController.h(15): warning:  #1-D: last line of file ends without a newline
+hardwareController.h(19): warning:  #1-D: last line of file ends without a newline
+  #endif /* HEADER_HARDWARECONTROLLER_H_ */
+HAL.h(8): warning:  #1295-D: Deprecated declaration write_1 - give arg types
+  int write_1();
+HAL.h(9): warning:  #1295-D: Deprecated declaration write_0 - give arg types
+  int write_0();
+HAL.h(10): warning:  #1295-D: Deprecated declaration readBit - give arg types
+  BYTE readBit();
+HAL.h(11): warning:  #1295-D: Deprecated declaration reset - give arg types
+  int reset();
+HAL.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif /* HEADER_HAL_H_ */
+hardwareController.c(47): warning:  #940-D: missing return statement at end of non-void function "initHardwareController" 
+  }
+hardwareController.c(60): warning:  #940-D: missing return statement at end of non-void function "setBusLow" 
+  }
+hardwareController.c(64): warning:  #940-D: missing return statement at end of non-void function "setBusHigh" 
+  }
+hardwareController.c(82): warning:  #940-D: missing return statement at end of non-void function "sendCommand" 
+  }
+hardwareController.c(90): warning:  #940-D: missing return statement at end of non-void function "writeBit" 
+  }
+hardwareController.c(99): warning:  #940-D: missing return statement at end of non-void function "writeBytes" 
+  }
+hardwareController.c: 15 warnings, 0 errors
+compiling temperatur.c...
+general.h(29): warning:  #1-D: last line of file ends without a newline
+  #endif /* HEADER_GENERAL_H_ */
+hardwareController.h(8): warning:  #1295-D: Deprecated declaration initHardwareController - give arg types
+  int initHardwareController();
+hardwareController.h(10): warning:  #1295-D: Deprecated declaration readByte - give arg types
+  int readByte();
+hardwareController.h(19): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_HARDWARECONTROLLER_H_ */
 HAL.h(8): warning:  #1295-D: Deprecated declaration write_1 - give arg types
   int write_1();
@@ -108,42 +134,14 @@ temperatur.c(61): warning:  #1-D: last line of file ends without a newline
 temperatur.c(61): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
   }
 temperatur.c: 13 warnings, 0 errors
-compiling hardwareController.c...
-general.h(26): warning:  #1-D: last line of file ends without a newline
-  #endif /* HEADER_GENERAL_H_ */
-hardwareController.h(8): warning:  #1295-D: Deprecated declaration initHardwareController - give arg types
-  int initHardwareController();
-hardwareController.h(10): warning:  #1295-D: Deprecated declaration readByte - give arg types
-  int readByte();
-hardwareController.h(15): warning:  #1-D: last line of file ends without a newline
-  #endif /* HEADER_HARDWARECONTROLLER_H_ */
-HAL.h(8): warning:  #1295-D: Deprecated declaration write_1 - give arg types
-  int write_1();
-HAL.h(9): warning:  #1295-D: Deprecated declaration write_0 - give arg types
-  int write_0();
-HAL.h(10): warning:  #1295-D: Deprecated declaration readBit - give arg types
-  BYTE readBit();
-HAL.h(11): warning:  #1295-D: Deprecated declaration reset - give arg types
-  int reset();
-HAL.h(15): warning:  #1-D: last line of file ends without a newline
-  #endif /* HEADER_HAL_H_ */
-hardwareController.c(47): warning:  #940-D: missing return statement at end of non-void function "initHardwareController" 
-  }
-hardwareController.c(60): warning:  #940-D: missing return statement at end of non-void function "setBusLow" 
-  }
-hardwareController.c(64): warning:  #940-D: missing return statement at end of non-void function "setBusHigh" 
-  }
-hardwareController.c(82): warning:  #940-D: missing return statement at end of non-void function "sendCommand" 
-  }
-hardwareController.c: 13 warnings, 0 errors
 compiling HAL.c...
-general.h(26): warning:  #1-D: last line of file ends without a newline
+general.h(29): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 hardwareController.h(8): warning:  #1295-D: Deprecated declaration initHardwareController - give arg types
   int initHardwareController();
 hardwareController.h(10): warning:  #1295-D: Deprecated declaration readByte - give arg types
   int readByte();
-hardwareController.h(15): warning:  #1-D: last line of file ends without a newline
+hardwareController.h(19): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_HARDWARECONTROLLER_H_ */
 HAL.h(8): warning:  #1295-D: Deprecated declaration write_1 - give arg types
   int write_1();
@@ -159,14 +157,14 @@ HAL.c(28): warning:  #940-D: missing return statement at end of non-void functio
   }
 HAL.c(35): warning:  #940-D: missing return statement at end of non-void function "write_0" 
   }
-HAL.c(69): warning:  #1-D: last line of file ends without a newline
+HAL.c(73): warning:  #1-D: last line of file ends without a newline
   }
-HAL.c(69): warning:  #940-D: missing return statement at end of non-void function "wait" 
+HAL.c(73): warning:  #940-D: missing return statement at end of non-void function "wait" 
   }
 HAL.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=6578 RO-data=482 RW-data=56 ZI-data=37488  
-".\Objects\_1Wire.axf" - 0 Error(s), 55 Warning(s).
+Program Size: Code=3388 RO-data=328 RW-data=40 ZI-data=36960  
+".\Objects\_1Wire.axf" - 0 Error(s), 57 Warning(s).
 Build Time Elapsed:  00:00:03
 </pre>
 </body>
