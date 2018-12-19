@@ -43,8 +43,18 @@ int main(void)
 {
 	Init_TI_Board();
 	initHardwareController();
-	readROM();
 
+	int maxSensors = 10;
+	int numberSensors = 0;
+	Sensor sensorList[maxSensors];
+	
+	initROMList(&numberSensors, maxSensors, sensorList);
+	
+	readROM();
+	
+	
+	
+	
 //	while(1){
 //		setBusHigh(GPIOG, 0);
 //		wait(1000);

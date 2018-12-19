@@ -23,27 +23,25 @@
 int initHardwareController() {
 	timerinit();
 	
-	// open-drain mode
-	BUS_PORT->OTYPER |= (1 << PIN_DATA);
+	// power pin
+	setMode(POWER_PIN, PUSH_PULL);
+	// clear register
+	BUS_PORT->MODER = BUS_PORT->MODER & ~(0x03 << (POWER_PIN * 2));
+	// set output mode (write)
+	BUS_PORT->MODER = BUS_PORT->MODER | (0x01 << (POWER_PIN * 2));
+	setBusHigh(BUS_PORT, POWER_PIN);
 	
-	// push-pull mode
-	//BUS_PORT->OTYPER &= ~(1 << PIN_DATA);
-	BUS_PORT->OTYPER &= ~(1 << PIN_POWER);
+	// data pin
+	setMode(DATA_PIN, OPEN_DRAIN);
+	// clear register
+	BUS_PORT->MODER = BUS_PORT->MODER & ~(0x03 << (DATA_PIN * 2));
+	// set output mode (write)
+	BUS_PORT->MODER = BUS_PORT->MODER | (0x01 << (DATA_PIN * 2));
+	setBusHigh(BUS_PORT, DATA_PIN);
 	
-	// clear Register
-	BUS_PORT->MODER = BUS_PORT->MODER & ~(0x03 << (PIN_DATA * 2));
-	// Set Output Mode (write)
-	BUS_PORT->MODER = BUS_PORT->MODER | (0x01 << (PIN_DATA * 2));
-	
-	// clear Register
-	BUS_PORT->MODER = BUS_PORT->MODER & ~(0x03 << (PIN_POWER * 2));
-	// Set Output Mode (write)
-	BUS_PORT->MODER = BUS_PORT->MODER | (0x01 << (PIN_POWER * 2));
-	setBusHigh(BUS_PORT, PIN_POWER);
-	
-	write_1();
 	wait(100);
-
+	
+	reset();
 }
 
 int setGPIOPin(GPIO_TypeDef* GPIOx, int pin) {
@@ -77,16 +75,28 @@ int readByte() {
 
 int sendCommand(int command) {
 	for(int i = 0; i < 8; i++) {
+		wait(1);
 		((command>>i)%2)==0 ? write_0() : write_1();
 	}
 }
 
 int writeBit(BYTE out) {
+	resetPIN(DATA_PIN);
 	if ((out & 0x01) == 1) {
-		write_1();
+		// write 1
+		setBusLow(BUS_PORT, DATA_PIN);
+		wait(6);	// Write 0 for 6 uS
+		setBusHigh(BUS_PORT, DATA_PIN);
+		wait(64);	// release for 64uS
+
 	} else {
-		write_0();
+		// write 0
+		setBusLow(BUS_PORT, DATA_PIN);
+		wait(60);
+		setBusHigh(BUS_PORT, DATA_PIN);
+		wait(10);
 	}
+	return 0;
 }
 
 int writeBytes(int numberOfBytes, BYTE out[numberOfBytes]) {
