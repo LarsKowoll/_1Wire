@@ -50,7 +50,6 @@ int main(void)
 	
 	initROMList(&numberSensors, maxSensors, sensorList);
 	
-	readROM();
 	
 	
 	

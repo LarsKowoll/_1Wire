@@ -11,12 +11,15 @@
 
 static BYTE checkBits(BYTE bit, BYTE bitKomplement);
 
+// Variablen nur global zum Debuggen
 unsigned long long romBits;
 BYTE bits[64] = {0};
 BYTE bit;
 BYTE bitKomplement;
 BYTE combination;
 BYTE output;
+int indexSensor;
+int decisionBit;
 
 void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors]) {
 	*numberSensors = 0;
@@ -25,7 +28,9 @@ void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensor
 	}
 	
 	// detect sensors
-	detectSensors(numberSensors, maxSensors, sensorList);
+	decisionBit = 0;
+	indexSensor = 0;
+	detectSensors(numberSensors, maxSensors, sensorList, indexSensor, decisionBit);
 	
 	// tft output
 	printSensors(3, sensorList);
@@ -48,10 +53,10 @@ Sensor createSensor(ROM rom) {
 	return sensor;
 }
 
-int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors]) {
+// wird rekursiv aufgerufen, Abbruchbedingung steckt in case 2
+int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors], int indexSensor, int decisionBit) {
 	reset();
 	romBits = 0;
-	int decisionBit = 0;
 	
 	sendCommand(SEARCH_ROM);
 	for (int i = 0; i < 64; i++) {
@@ -72,8 +77,14 @@ int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSenso
 					break;
 			case 2: // ungleiche Bits
 					romBits = romBits | (0 << i);
-					output = 0; // deselecting devices with bit = 1
+					if (decisionBit == i) {
+						output = 1; // deselecting devices with bit = 0
+					}
+					else {
+						output = 0; // deselecting devices with bit = 1
+					}
 					decisionBit = i;
+					detectSensors(numberSensors, maxSensors, sensorList, indexSensor, decisionBit);
 					break;
 			case 3: break;// Fehlerfall; Verbindung zu den Sensoren ist unterbrochen
 			default: break;
@@ -91,6 +102,12 @@ int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSenso
 	int i = 0;
 	ROM rom;
 	rom = *(ROM *) &romBits;
+	
+	sensorList[indexSensor].rom = rom;
+	indexSensor++;
+	*numberSensors = *numberSensors + 1;
+	
+	printSensors(*numberSensors, sensorList);	
 	
 	return 0;
 }

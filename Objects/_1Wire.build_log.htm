@@ -3,51 +3,45 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.25.2.0
-Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: TI Labor HAW Hamburg Flex license: MDK-ARM Professional: 40 user(s) (mdk_pro) Support: Nov 2018
+IDE-Version: µVision V5.23.0.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Philip Zirfaﬂ, HAW Hamburg, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional: 40 user(s)  Version: 5.25.2.0
+Toolchain:       MDK-Lite  Version: 5.23
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 6 (build 750)
-Assembler:       Armasm.exe V5.06 update 6 (build 750)
-Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
-Library Manager: ArmAr.exe V5.06 update 6 (build 750)
-Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.25.2.0
-Dialog DLL:      DCM.DLL V1.17.1.0
-Target DLL:      ULP2CM3.DLL V2.209.20.0
-Dialog DLL:      TCM.DLL V1.35.1.0
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.23
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
+Target DLL:      UL2CM3.DLL V1.159.7.0
+Dialog DLL:      TARMSTM.DLL V1.66.0.0
  
 <h2>Project:</h2>
-Z:\TI_Labor\Keil\1Wire\_1Wire.uvproj
+C:\TI_Labor\Keil\_1Wire\_1Wire.uvproj
 Project File Date:  12/19/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'TI-Board'
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'Simulation'
 compiling assert.c...
 compiling keypad.c...
-compiling misc.c...
 compiling timer.c...
-compiling TI_Lib.c...
 compiling tft.c...
-assembling startup_stm32f4xx.s...
-compiling stm32f4xx_dma.c...
-compiling stm32f4xx_adc.c...
-compiling stm32f4xx_usart.c...
-compiling stm32f4xx_gpio.c...
-compiling stm32f4xx_rcc.c...
-compiling system_stm32f4xx.c...
+compiling TI_Lib.c...
+assembling startup_stm32f10x_md.s...
 compiling Retarget.c...
+compiling system_stm32f10x.c...
+compiling Getline.c...
+compiling Serial.c...
 compiling crc.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 crc.c: 1 warning, 0 errors
-compiling TI_Board_ADC.c...
-compiling Usart.c...
-compiling TI_Board_IO.c...
+compiling SIM_Board_IO.c...
 compiling main.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -61,8 +55,6 @@ temperatur.h(7): warning:  #1295-D: Deprecated declaration createROM - give arg 
   ROM createROM();
 temperatur.h(8): warning:  #1295-D: Deprecated declaration createSensor - give arg types
   Sensor createSensor();
-temperatur.h(10): warning:  #1295-D: Deprecated declaration readROM - give arg types
-  int readROM();
 temperatur.h(12): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_TEMPERATUR_H_ */
 HAL.h(8): warning:  #1295-D: Deprecated declaration write_1 - give arg types
@@ -75,15 +67,15 @@ HAL.h(13): warning:  #1295-D: Deprecated declaration reset - give arg types
   int reset();
 HAL.h(18): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_HAL_H_ */
-main.c(93): warning:  #111-D: statement is unreachable
+main.c(92): warning:  #111-D: statement is unreachable
     return 0;
-main.c(65): warning:  #177-D: variable "byte1"  was declared but never referenced
+main.c(64): warning:  #177-D: variable "byte1"  was declared but never referenced
   	int byte1, byte2;
-main.c(65): warning:  #177-D: variable "byte2"  was declared but never referenced
+main.c(64): warning:  #177-D: variable "byte2"  was declared but never referenced
   	int byte1, byte2;
-main.c(66): warning:  #177-D: variable "buff"  was declared but never referenced
+main.c(65): warning:  #177-D: variable "buff"  was declared but never referenced
     BYTE buff[] = { //x^8 + x^5 + x^4 +1 = 1 0011 0001
-main.c: 17 warnings, 0 errors
+main.c: 16 warnings, 0 errors
 compiling hardwareController.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -137,41 +129,19 @@ temperatur.h(7): warning:  #1295-D: Deprecated declaration createROM - give arg 
   ROM createROM();
 temperatur.h(8): warning:  #1295-D: Deprecated declaration createSensor - give arg types
   Sensor createSensor();
-temperatur.h(10): warning:  #1295-D: Deprecated declaration readROM - give arg types
-  int readROM();
 temperatur.h(12): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_TEMPERATUR_H_ */
 output.h(9): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_OUTPUT_H_ */
-temperatur.c(41): warning:  #940-D: missing return statement at end of non-void function "detectSensors" 
-  }
-temperatur.c(70): warning:  #68-D: integer conversion resulted in a change of sign
+temperatur.c(66): warning:  #68-D: integer conversion resulted in a change of sign
   		output = -1;
-temperatur.c(122): warning:  #940-D: missing return statement at end of non-void function "readROM" 
-  }
-temperatur.c(63): warning:  #550-D: variable "decisionBit"  was set but never used
-  	int decisionBit = 0;
-temperatur.c(100): warning:  #177-D: variable "i"  was declared but never referenced
+temperatur.c(102): warning:  #177-D: variable "i"  was declared but never referenced
   	int i = 0;
-temperatur.c(103): warning:  #550-D: variable "crc"  was set but never used
-  	BYTE crc;
-temperatur.c(105): warning:  #550-D: variable "serialNumber1"  was set but never used
-  	BYTE serialNumber1;
-temperatur.c(106): warning:  #550-D: variable "serialNumber2"  was set but never used
-  	BYTE serialNumber2;
-temperatur.c(107): warning:  #550-D: variable "serialNumber3"  was set but never used
-  	BYTE serialNumber3;
-temperatur.c(108): warning:  #550-D: variable "serialNumber4"  was set but never used
-  	BYTE serialNumber4;
-temperatur.c(109): warning:  #550-D: variable "serialNumber5"  was set but never used
-  	BYTE serialNumber5;
-temperatur.c(110): warning:  #550-D: variable "serialNumber6"  was set but never used
-  	BYTE serialNumber6;
-temperatur.c(137): warning:  #1-D: last line of file ends without a newline
+temperatur.c(130): warning:  #1-D: last line of file ends without a newline
   }
-temperatur.c(137): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
+temperatur.c(130): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
   }
-temperatur.c: 28 warnings, 0 errors
+temperatur.c: 17 warnings, 0 errors
 compiling HAL.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -223,17 +193,15 @@ temperatur.h(7): warning:  #1295-D: Deprecated declaration createROM - give arg 
   ROM createROM();
 temperatur.h(8): warning:  #1295-D: Deprecated declaration createSensor - give arg types
   Sensor createSensor();
-temperatur.h(10): warning:  #1295-D: Deprecated declaration readROM - give arg types
-  int readROM();
 temperatur.h(12): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_TEMPERATUR_H_ */
-output.c(21): warning:  #1-D: last line of file ends without a newline
+output.c(35): warning:  #1-D: last line of file ends without a newline
   }
-output.c: 14 warnings, 0 errors
+output.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=8470 RO-data=482 RW-data=68 ZI-data=37556  
-".\Objects\_1Wire.axf" - 0 Error(s), 87 Warning(s).
-Build Time Elapsed:  00:00:03
+Program Size: Code=5328 RO-data=328 RW-data=60 ZI-data=37028  
+".\Objects\_1Wire.axf" - 0 Error(s), 74 Warning(s).
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

@@ -7,6 +7,6 @@
 ROM createROM();
 Sensor createSensor();
 void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors]);
-int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors]);
+int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors], int indexSensor, int decisionBit);
 
 #endif /* HEADER_TEMPERATUR_H_ */
