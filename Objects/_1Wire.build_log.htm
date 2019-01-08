@@ -29,13 +29,13 @@ Project File Date:  12/19/2018
 Rebuild target 'Simulation'
 compiling assert.c...
 compiling keypad.c...
-compiling timer.c...
 compiling tft.c...
 compiling TI_Lib.c...
+compiling timer.c...
 assembling startup_stm32f10x_md.s...
 compiling Retarget.c...
-compiling system_stm32f10x.c...
 compiling Getline.c...
+compiling system_stm32f10x.c...
 compiling Serial.c...
 compiling crc.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
@@ -67,15 +67,23 @@ HAL.h(13): warning:  #1295-D: Deprecated declaration reset - give arg types
   int reset();
 HAL.h(18): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_HAL_H_ */
-main.c(92): warning:  #111-D: statement is unreachable
+stack.h(7): warning:  #1295-D: Deprecated declaration stack_init - give arg types
+  void stack_init();
+stack.h(9): warning:  #1295-D: Deprecated declaration stack_pop - give arg types
+  int stack_pop();
+stack.h(10): warning:  #1295-D: Deprecated declaration stack_get - give arg types
+  int stack_get();
+stack.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif /* STACK_H_ */
+main.c(94): warning:  #111-D: statement is unreachable
     return 0;
-main.c(64): warning:  #177-D: variable "byte1"  was declared but never referenced
+main.c(66): warning:  #177-D: variable "byte1"  was declared but never referenced
   	int byte1, byte2;
-main.c(64): warning:  #177-D: variable "byte2"  was declared but never referenced
+main.c(66): warning:  #177-D: variable "byte2"  was declared but never referenced
   	int byte1, byte2;
-main.c(65): warning:  #177-D: variable "buff"  was declared but never referenced
+main.c(67): warning:  #177-D: variable "buff"  was declared but never referenced
     BYTE buff[] = { //x^8 + x^5 + x^4 +1 = 1 0011 0001
-main.c: 16 warnings, 0 errors
+main.c: 20 warnings, 0 errors
 compiling hardwareController.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -137,9 +145,9 @@ temperatur.c(66): warning:  #68-D: integer conversion resulted in a change of si
   		output = -1;
 temperatur.c(102): warning:  #177-D: variable "i"  was declared but never referenced
   	int i = 0;
-temperatur.c(130): warning:  #1-D: last line of file ends without a newline
+temperatur.c(128): warning:  #1-D: last line of file ends without a newline
   }
-temperatur.c(130): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
+temperatur.c(128): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
   }
 temperatur.c: 17 warnings, 0 errors
 compiling HAL.c...
@@ -170,6 +178,24 @@ HAL.c(121): warning:  #1-D: last line of file ends without a newline
 HAL.c(121): warning:  #940-D: missing return statement at end of non-void function "wait" 
   }
 HAL.c: 13 warnings, 0 errors
+compiling stack.c...
+general.h(38): warning:  #1-D: last line of file ends without a newline
+  #endif /* HEADER_GENERAL_H_ */
+stack.h(7): warning:  #1295-D: Deprecated declaration stack_init - give arg types
+  void stack_init();
+stack.h(9): warning:  #1295-D: Deprecated declaration stack_pop - give arg types
+  int stack_pop();
+stack.h(10): warning:  #1295-D: Deprecated declaration stack_get - give arg types
+  int stack_get();
+stack.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif /* STACK_H_ */
+stack.c(11): warning:  #550-D: variable "get"  was set but never used
+  	int get, pop;
+stack.c(11): warning:  #550-D: variable "pop"  was set but never used
+  	int get, pop;
+stack.c(39): warning:  #1-D: last line of file ends without a newline
+  }
+stack.c: 8 warnings, 0 errors
 compiling output.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -199,9 +225,9 @@ output.c(35): warning:  #1-D: last line of file ends without a newline
   }
 output.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=5328 RO-data=328 RW-data=60 ZI-data=37028  
-".\Objects\_1Wire.axf" - 0 Error(s), 74 Warning(s).
-Build Time Elapsed:  00:00:05
+Program Size: Code=5500 RO-data=328 RW-data=64 ZI-data=37104  
+".\Objects\_1Wire.axf" - 0 Error(s), 86 Warning(s).
+Build Time Elapsed:  00:00:19
 </pre>
 </body>
 </html>

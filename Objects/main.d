@@ -14,3 +14,4 @@
 .\objects\main.o: hardwareController.h
 .\objects\main.o: temperatur.h
 .\objects\main.o: HAL.h
+.\objects\main.o: stack.h

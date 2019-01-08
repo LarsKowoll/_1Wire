@@ -23,6 +23,7 @@
 #include "hardwareController.h"
 #include "temperatur.h"
 #include "HAL.h"
+#include "stack.h"
 
 //--- For GPIOs -----------------------------
 //Include instead of "stm32f4xx.h" for
@@ -43,6 +44,7 @@ int main(void)
 {
 	Init_TI_Board();
 	initHardwareController();
+	stack_init();
 
 	int maxSensors = 10;
 	int numberSensors = 0;

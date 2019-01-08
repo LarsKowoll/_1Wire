@@ -16,6 +16,7 @@
 ".\objects\temperatur.o"
 ".\objects\hal.o"
 ".\objects\output.o"
+".\objects\stack.o"
 --strict --scatter ".\Objects\_1Wire.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
