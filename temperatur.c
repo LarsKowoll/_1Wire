@@ -10,6 +10,7 @@
 #include "output.h"
 
 static BYTE checkBits(BYTE bit, BYTE bitKomplement);
+static int jumpToBranch(int index, unsigned long long romBits);
 
 // Variablen nur global zum Debuggen
 unsigned long long romBits;
@@ -30,7 +31,12 @@ void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensor
 	// detect sensors
 	decisionBit = 0;
 	indexSensor = 0;
-	detectSensors(numberSensors, maxSensors, sensorList, indexSensor, decisionBit);
+	
+	int index = 0;
+	unsigned long long romBits = 0;
+	reset();
+	sendCommand(SEARCH_ROM);
+	detectSensors(index, romBits);
 	
 	// tft output
 	printSensors(3, sensorList);
@@ -53,61 +59,85 @@ Sensor createSensor(ROM rom) {
 	return sensor;
 }
 
-// wird rekursiv aufgerufen, Abbruchbedingung steckt in case 2
-int detectSensors(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors], int indexSensor, int decisionBit) {
-	reset();
-	romBits = 0;
+// wird rekursiv aufgerufen // int *numberSensors, int maxSensors, Sensor sensorList[maxSensors], int indexSensor, int decisionBit
+void detectSensors(int index, unsigned long long romBits) {
 	
-	sendCommand(SEARCH_ROM);
-	for (int i = 0; i < 64; i++) {
-		bit = readBit();
-		bitKomplement = readBit();
-		combination = checkBits(bit, bitKomplement);
-		output = -1;
+	if (index >= 64) {
+		// addROM
+		//int i = 0;
+		ROM rom;
+		rom = *(ROM *) &romBits;
 		
-		switch (combination) {
-			case 0: output = 0; // bit = 0 für alle Sensoren
-					break;
-			case 1: { // bit = 1 für alle Sensoren
-						unsigned long long bitMaske = 1;
-						romBits = romBits | (bitMaske << i);
-						bits[i] = 1;
-						output = 1;
-					}
-					break;
-			case 2: // ungleiche Bits
-					romBits = romBits | (0 << i);
-					if (decisionBit == i) {
-						output = 1; // deselecting devices with bit = 0
-					}
-					else {
-						output = 0; // deselecting devices with bit = 1
-					}
-					decisionBit = i;
-					detectSensors(numberSensors, maxSensors, sensorList, indexSensor, decisionBit);
-					break;
-			case 3: break;// Fehlerfall; Verbindung zu den Sensoren ist unterbrochen
-			default: break;
-		}
+		//sensorList[indexSensor].rom = rom;
+		//indexSensor++;
+		//*numberSensors = *numberSensors + 1;
 		
-		switch (output) {
-			case 0: write_0();
-					break;
-			case 1: write_1();
-					break;
-			default: break;
-		}
+		//printSensors(*numberSensors, sensorList);	
+		int a = 1;
+		return;
 	}
 	
+	bit = readBit();
+	bitKomplement = readBit();
+	combination = checkBits(bit, bitKomplement);
+	
+	switch (combination) {
+		case 0: write_0(); // bit = 0 für alle Sensoren
+						detectSensors(index + 1, romBits);
+						break;
+		case 1: { // bit = 1 für alle Sensoren
+							write_1();
+							unsigned long long bitMaske = 1;
+							romBits = romBits | (bitMaske << index);
+							bits[index] = 1;
+							detectSensors(index + 1, romBits);
+						}
+						break;
+		case 2: // ungleiche Bits
+						write_0();
+						detectSensors(index + 1, romBits);
+		
+						jumpToBranch(index, romBits);
+		
+						write_1();
+						unsigned long long bitMaske = 1;
+						romBits = romBits | (bitMaske << index);
+						bits[index] = 1;
+						detectSensors(index + 1, romBits);
+		
+						break;
+		case 3: break; // Fehlerfall; Verbindung zu den Sensoren ist unterbrochen
+		default: break;
+	}
+}
+
+static int jumpToBranch(int index, unsigned long long romBits) {
+	if (index == 0) {
+		return 0;
+	}
+	
+	reset();
+	sendCommand(SEARCH_ROM);
+	
 	int i = 0;
-	ROM rom;
-	rom = *(ROM *) &romBits;
-	
-	sensorList[indexSensor].rom = rom;
-	indexSensor++;
-	*numberSensors = *numberSensors + 1;
-	
-	printSensors(*numberSensors, sensorList);	
+	int bit, bitKomplement, antwortBit;
+	do {
+		bit = readBit();
+		bitKomplement = readBit();
+		if (!((bit == 1) && (bitKomplement == 1))) {
+			antwortBit = (romBits & (1 << i)) >> i;
+			if (antwortBit == 0) {
+				write_0();
+			}
+			else if (antwortBit == 1) {
+				write_1();
+			}
+		}
+		else {
+			return -1; // error
+		}
+		i++;
+	} while (i < index);
 	
 	return 0;
 }

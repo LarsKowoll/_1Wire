@@ -887,6 +887,11 @@
               <FileType>1</FileType>
               <FilePath>.\output.c</FilePath>
             </File>
+            <File>
+              <FileName>stack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stack.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1019,6 +1024,11 @@
               <FileName>output.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\output.h</FilePath>
+            </File>
+            <File>
+              <FileName>stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\stack.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1934,6 +1944,11 @@
               <FileType>1</FileType>
               <FilePath>.\output.c</FilePath>
             </File>
+            <File>
+              <FileName>stack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stack.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1998,6 +2013,11 @@
               <FileName>output.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\output.h</FilePath>
+            </File>
+            <File>
+              <FileName>stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\stack.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2816,6 +2836,11 @@
               <FileType>1</FileType>
               <FilePath>.\output.c</FilePath>
             </File>
+            <File>
+              <FileName>stack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stack.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2948,6 +2973,11 @@
               <FileName>output.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\output.h</FilePath>
+            </File>
+            <File>
+              <FileName>stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\stack.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3795,6 +3825,11 @@
               <FileType>1</FileType>
               <FilePath>.\output.c</FilePath>
             </File>
+            <File>
+              <FileName>stack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stack.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3859,6 +3894,11 @@
               <FileName>output.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\output.h</FilePath>
+            </File>
+            <File>
+              <FileName>stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\stack.h</FilePath>
             </File>
           </Files>
         </Group>
