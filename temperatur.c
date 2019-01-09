@@ -11,6 +11,8 @@
 
 static BYTE checkBits(BYTE bit, BYTE bitKomplement);
 static int jumpToBranch(int index, unsigned long long romBits);
+static void search_recursive(int current_index, uint64_t romcode);
+static void jump_to(int current_index, uint64_t romcode);
 
 // Variablen nur global zum Debuggen
 unsigned long long romBits;
@@ -22,10 +24,14 @@ BYTE output;
 int indexSensor;
 int decisionBit;
 
+int numberSensors2 = 0;
+Sensor sensorList2[10];
+
 void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensors]) {
 	*numberSensors = 0;
 	for (int i = 0; i < maxSensors; i++) {
 		sensorList[i] = createSensor(createROM());
+		sensorList2[i] = createSensor(createROM());
 	}
 	
 	// detect sensors
@@ -36,6 +42,7 @@ void initROMList(int *numberSensors, int maxSensors, Sensor sensorList[maxSensor
 	unsigned long long romBits = 0;
 	reset();
 	sendCommand(SEARCH_ROM);
+	search_recursive(index, romBits);
 	detectSensors(index, romBits);
 	
 	// tft output
@@ -59,21 +66,73 @@ Sensor createSensor(ROM rom) {
 	return sensor;
 }
 
+static void search_recursive(int current_index, uint64_t romcode){
+    
+	if(current_index >= 64){
+        // add sensor and quit recursion
+        //
+        return;
+    }
+	
+    int bit, inverse;
+    bit = readBit();
+    inverse = readBit();
+    
+    if(bit == !inverse){
+        writeBit(bit);
+        romcode |= ((uint64_t)bit << current_index);
+        search_recursive(current_index + 1, romcode);        
+    } else if( bit == 0 && inverse == 0){ // Das Bit der Sensoren ist nicht einheitlic
+        // Need to decide
+        // try 0 first
+        write_0();
+        romcode |= (0 << current_index);
+        search_recursive(current_index + 1, romcode);
+        
+        // restart from the beginning
+        jump_to(current_index, romcode);
+        
+        // try 1
+       write_1();
+        romcode |= (1 << current_index);
+        search_recursive(current_index + 1, romcode);   
+    } else {
+        return;
+    }
+}
+
+static void jump_to(int current_index, uint64_t romcode){
+    reset();
+    sendCommand(SEARCH_ROM);
+			readBit();
+			readBit();
+	
+    for(int i = 0; i < current_index; i++){		
+			writeBit((romcode & (1 << i))>>i);
+			readBit();
+			readBit();			
+    }
+}
+
 // wird rekursiv aufgerufen // int *numberSensors, int maxSensors, Sensor sensorList[maxSensors], int indexSensor, int decisionBit
 void detectSensors(int index, unsigned long long romBits) {
 	
 	if (index >= 64) {
 		// addROM
 		//int i = 0;
+		
 		ROM rom;
 		rom = *(ROM *) &romBits;
+		
+		sensorList2[numberSensors2].rom = rom;
 		
 		//sensorList[indexSensor].rom = rom;
 		//indexSensor++;
 		//*numberSensors = *numberSensors + 1;
 		
-		//printSensors(*numberSensors, sensorList);	
-		int a = 1;
+		numberSensors2++;
+		printSensors(numberSensors2, sensorList2);	
+		
 		return;
 	}
 	

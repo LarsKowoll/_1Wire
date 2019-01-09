@@ -3,45 +3,69 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.23.0.0
-Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Philip Zirfaﬂ, HAW Hamburg, LIC=----
+IDE-Version: µVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: TI Labor HAW Hamburg Flex license: MDK-ARM Professional: 50 user(s) (mdk_pro) Operation stops: 31 Dec 2019
  
 Tool Versions:
-Toolchain:       MDK-Lite  Version: 5.23
+Toolchain:       MDK-ARM Professional: 50 user(s)  Version: 5.25.2.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 4 (build 422)
-Assembler:       Armasm.exe V5.06 update 4 (build 422)
-Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
-Library Manager: ArmAr.exe V5.06 update 4 (build 422)
-Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
-CPU DLL:         SARMCM3.DLL V5.23
-Dialog DLL:      DARMSTM.DLL V1.68.0.0
-Target DLL:      UL2CM3.DLL V1.159.7.0
-Dialog DLL:      TARMSTM.DLL V1.66.0.0
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.25.2.0
+Dialog DLL:      DCM.DLL V1.17.1.0
+Target DLL:      ULP2CM3.DLL V2.209.20.0
+Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
-C:\TI_Labor\Keil\_1Wire\_1Wire.uvproj
-Project File Date:  01/08/2019
+Z:\TI_Labor\Keil\1Wire\_1Wire.uvproj
+Project File Date:  01/09/2019
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'Simulation'
-compiling keypad.c...
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'TI-Board'
 compiling assert.c...
-compiling tft.c...
+compiling keypad.c...
 compiling timer.c...
 compiling TI_Lib.c...
-assembling startup_stm32f10x_md.s...
+compiling misc.c...
+compiling tft.c...
+assembling startup_stm32f4xx.s...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_usart.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_gpio.c...
 compiling Retarget.c...
-compiling system_stm32f10x.c...
-compiling Getline.c...
-compiling Serial.c...
 compiling crc.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
 crc.c: 1 warning, 0 errors
-compiling SIM_Board_IO.c...
+compiling Usart.c...
+compiling TI_Board_ADC.c...
+compiling TI_Board_IO.c...
+compiling stack.c...
+general.h(38): warning:  #1-D: last line of file ends without a newline
+  #endif /* HEADER_GENERAL_H_ */
+stack.h(7): warning:  #1295-D: Deprecated declaration stack_init - give arg types
+  void stack_init();
+stack.h(9): warning:  #1295-D: Deprecated declaration stack_pop - give arg types
+  int stack_pop();
+stack.h(10): warning:  #1295-D: Deprecated declaration stack_get - give arg types
+  int stack_get();
+stack.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif /* STACK_H_ */
+stack.c(11): warning:  #550-D: variable "get"  was set but never used
+  	int get, pop;
+stack.c(11): warning:  #550-D: variable "pop"  was set but never used
+  	int get, pop;
+stack.c(39): warning:  #1-D: last line of file ends without a newline
+  }
+stack.c: 8 warnings, 0 errors
 compiling main.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -111,7 +135,7 @@ hardwareController.c(62): warning:  #940-D: missing return statement at end of n
   }
 hardwareController.c(81): warning:  #940-D: missing return statement at end of non-void function "sendCommand" 
   }
-hardwareController.c(109): warning:  #940-D: missing return statement at end of non-void function "writeBytes" 
+hardwareController.c(103): warning:  #940-D: missing return statement at end of non-void function "writeBytes" 
   }
 hardwareController.c: 14 warnings, 0 errors
 compiling temperatur.c...
@@ -141,19 +165,15 @@ temperatur.h(11): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_TEMPERATUR_H_ */
 output.h(9): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_OUTPUT_H_ */
-temperatur.c(68): warning:  #550-D: variable "rom"  was set but never used
-  		ROM rom;
-temperatur.c(76): warning:  #177-D: variable "a"  was declared but never referenced
-  		int a = 1;
-temperatur.c(84): warning:  #546-D: transfer of control bypasses initialization of:
-            variable "bitMaske"  (declared at line 103)
+temperatur.c(143): warning:  #546-D: transfer of control bypasses initialization of:
+            variable "bitMaske"  (declared at line 162)
   	switch (combination) {
   	^
-temperatur.c(158): warning:  #1-D: last line of file ends without a newline
+temperatur.c(217): warning:  #1-D: last line of file ends without a newline
   }
-temperatur.c(158): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
+temperatur.c(217): warning:  #940-D: missing return statement at end of non-void function "checkBits" 
   }
-temperatur.c: 18 warnings, 0 errors
+temperatur.c: 16 warnings, 0 errors
 compiling HAL.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -182,24 +202,6 @@ HAL.c(121): warning:  #1-D: last line of file ends without a newline
 HAL.c(121): warning:  #940-D: missing return statement at end of non-void function "wait" 
   }
 HAL.c: 13 warnings, 0 errors
-compiling stack.c...
-general.h(38): warning:  #1-D: last line of file ends without a newline
-  #endif /* HEADER_GENERAL_H_ */
-stack.h(7): warning:  #1295-D: Deprecated declaration stack_init - give arg types
-  void stack_init();
-stack.h(9): warning:  #1295-D: Deprecated declaration stack_pop - give arg types
-  int stack_pop();
-stack.h(10): warning:  #1295-D: Deprecated declaration stack_get - give arg types
-  int stack_get();
-stack.h(12): warning:  #1-D: last line of file ends without a newline
-  #endif /* STACK_H_ */
-stack.c(11): warning:  #550-D: variable "get"  was set but never used
-  	int get, pop;
-stack.c(11): warning:  #550-D: variable "pop"  was set but never used
-  	int get, pop;
-stack.c(39): warning:  #1-D: last line of file ends without a newline
-  }
-stack.c: 8 warnings, 0 errors
 compiling output.c...
 general.h(38): warning:  #1-D: last line of file ends without a newline
   #endif /* HEADER_GENERAL_H_ */
@@ -229,9 +231,9 @@ output.c(35): warning:  #1-D: last line of file ends without a newline
   }
 output.c: 13 warnings, 0 errors
 linking...
-Program Size: Code=5592 RO-data=328 RW-data=64 ZI-data=37104  
-".\Objects\_1Wire.axf" - 0 Error(s), 87 Warning(s).
-Build Time Elapsed:  00:00:05
+Program Size: Code=9250 RO-data=482 RW-data=84 ZI-data=37796  
+".\Objects\_1Wire.axf" - 0 Error(s), 85 Warning(s).
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

@@ -84,17 +84,11 @@ int writeBit(BYTE out) {
 	resetPIN(DATA_PIN);
 	if ((out & 0x01) == 1) {
 		// write 1
-		setBusLow(BUS_PORT, DATA_PIN);
-		wait(6);	// Write 0 for 6 uS
-		setBusHigh(BUS_PORT, DATA_PIN);
-		wait(64);	// release for 64uS
+		write_1();
 
 	} else {
 		// write 0
-		setBusLow(BUS_PORT, DATA_PIN);
-		wait(60);
-		setBusHigh(BUS_PORT, DATA_PIN);
-		wait(10);
+		write_0();
 	}
 	return 0;
 }
